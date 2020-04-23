@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="userinfo">
+  <!-- <view class="userinfo">
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
     <block wx:else>
       <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
@@ -9,5 +9,36 @@
   </view>
   <view class="usermotto">
     <text class="user-motto">{{motto}}</text>
+  </view> -->
+
+  <view>
+    <text>{{ title }}</text>
   </view>
+
+<!-- 
+   <view>
+     <text>{{ arr }}</text>
+   </view> -->
+
+   <input placeholder="请输入内容" bindinput="add"></input>
+
+   <view class="list" wx:if="{{ users.length>0 }}">
+      <view 
+          class="item" 
+          wx:for="{{ users  }}"
+          wx:key="ite.id"
+      >
+        <text>编号：{{index+1}}--</text>
+         <text>用户名：{{ item.name }}---</text>
+         <text>年龄：{{ item.age }}</text>
+         <button size="mini" 
+                 bindtap="delete"
+                 data-idx="{{ index }}"
+          >删除</button>
+      </view>
+   </view>
+   
+
+   <view wx:else>数据已经清空了</view>
+
 </view>

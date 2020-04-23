@@ -3,8 +3,17 @@
 const app = getApp()
 
 Page({
+  //相当于vue中的data,存放页面内部的数据
   data: {
-    motto: 'Hello 小程序',
+    motto: 'Hello 微信小程序',
+    title:'小程序第一天学习',
+    arr:['vue','react','Flutter'],
+    users:[
+      { id:1001,name:'姚杰',age:20,work:'前端开发' },
+      { id:1002,name:'盖威',age:20,work:'java' },
+      { id:1003,name:'王迪',age:20,work:'UI' },
+      { id:1004,name:'苏宇浩',age:20,work:'PHP' },
+    ],
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
@@ -50,5 +59,20 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+  },
+  delete(e) {
+  //  console.log('删除',e)
+    let { idx }=e.currentTarget.dataset;//ES6解构赋值的写法
+    console.log('删除前：',this.data.users)
+
+    this.data.users.splice(idx,1);
+    this.setData({
+      users: this.data.users
+    })
+
+    console.log('删除后：',this.data.users)
+  },
+  add(e) {
+    console.log('添加的值：',e)
   }
 })

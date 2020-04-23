@@ -1,0 +1,5 @@
+/* custom-tab-bar/index.wxss */
+
+text {
+  color:#f00;
+}
