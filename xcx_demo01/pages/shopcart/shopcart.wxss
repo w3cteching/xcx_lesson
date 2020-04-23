@@ -1,0 +1,6 @@
+/* pages/shopcart/shopcart.wxss */
+
+.cart {
+  border:1px solid #f00;
+  height: 200px;
+}
