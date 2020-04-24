@@ -1,1 +1,11 @@
-/* pages/cate/cate.wxss */
+.tab-nav{
+   display:flex;
+}
+
+.active {
+   border-bottom:1px solid #f00;
+}
+
+.btn {
+  border-radius:0;
+}

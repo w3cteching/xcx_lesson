@@ -5,6 +5,7 @@ const app = getApp()
 Page({
   //相当于vue中的data,存放页面内部的数据
   data: {
+    c:'#0f0',
     motto: 'Hello 微信小程序',
     title:'小程序第一天学习',
     arr:['vue','react','Flutter'],
@@ -24,7 +25,8 @@ Page({
       url: '../logs/logs'
     })
   },
-  onLoad: function () {
+  onLoad() {
+    console.log('页面onload')
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -52,6 +54,18 @@ Page({
       })
     }
   },
+  onReady() {
+    console.log('index-onReady')
+  },
+  onShow() {
+    console.log('index-onShow')
+  },
+  onHide() {
+    console.log('index-onHide')
+  },
+  onUnload() {
+    console.log('index-onUnload')
+  },
   getUserInfo: function(e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
@@ -67,12 +81,26 @@ Page({
 
     this.data.users.splice(idx,1);
     this.setData({
-      users: this.data.users
+      users: this.data.users, //简单粗爆
     })
 
     console.log('删除后：',this.data.users)
   },
   add(e) {
     console.log('添加的值：',e)
+  },
+  modi(e) {
+    let { idx } = e.currentTarget.dataset;//ES6解构赋值的写法
+    let title="ok"
+
+   // this.data.users[idx].name = this.data.users[idx].name+title;
+   //let tempItem='users['+idx+'].name'
+   let tempItem=`users[${idx}].name`;
+
+    this.setData({
+     // [tempItem]: this.data.users[idx].name+title
+     'users[2].name':'王迪哈哈'
+    });
+
   }
 })

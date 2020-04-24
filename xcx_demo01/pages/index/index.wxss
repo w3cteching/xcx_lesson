@@ -1,3 +1,4 @@
+@import "/public/style/theme1.wxss";
 /**index.wxss**/
 .userinfo {
   display: flex;

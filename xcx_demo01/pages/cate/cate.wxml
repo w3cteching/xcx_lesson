@@ -1,3 +1,34 @@
-<view>
-  <text>这是分类页面</text>
+<view class="v1" catchtap="fn3">
+  <!-- <text>这是分类页面</text>
+
+  <view class="v2" catchtap="fn2">
+      <text>v2</text>
+      <view catchtap="fn1">
+         <text>v3</text>
+      </view>
+  </view> -->
+
+
+   <view class="tab">
+      <view class="tab-nav">
+         <button 
+                class="btn {{ index===currentIndex ? 'active':'' }}"
+                 wx:for="{{ cateInfo }}"
+                 catchtap="changeItem"
+                 data-index="{{ index }}"
+         >
+            <text>{{ item.cname }}</text>
+         </button>
+      </view>
+      <view class="tab-con" wx:for="{{ cateInfo }}" wx:if="{{ index===currentIndex }}">
+        <text>{{ item.content }}</text>
+      </view>
+   </view>
+
+
+   <view>
+    <text>{{ testData }}</text>
+   </view>
+
+
 </view>

@@ -28,13 +28,16 @@
           wx:for="{{ users  }}"
           wx:key="ite.id"
       >
-        <text>编号：{{index+1}}--</text>
+        <text style="color:{{ c }}">编号：{{index+1}}--</text>
          <text>用户名：{{ item.name }}---</text>
          <text>年龄：{{ item.age }}</text>
          <button size="mini" 
                  bindtap="delete"
                  data-idx="{{ index }}"
           >删除</button>
+          <button size="mini" 
+                 bindtap="modi"
+                 data-idx="{{ index }}">修改</button>
       </view>
    </view>
    

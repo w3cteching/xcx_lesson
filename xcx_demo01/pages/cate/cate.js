@@ -1,66 +1,41 @@
-// pages/cate/cate.js
+
+//获取app.js实例
+const app=getApp();
+
+console.log('app::::',app);
+
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    currentIndex:0,
+    testData: app.shuju.name,
+    cateInfo:[
+      {id:1001,cname:'服装',content:'服装的内容'},
+      { id: 1002, cname: '电子', content:'电子的内容'},
+      { id: 1003, cname: '玩具', content:'玩具的内容'},
+      { id: 1004, cname: '水果', content:'水果的内容'},
+    ]
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  fn1() {
+    console.log('触发了fn1')
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  fn2() {
+    console.log('触发了fn2')
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  fn3() {
+    console.log('触发了fn3')
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  //tab切换方法
+  changeItem(e) {
+    let { index } = e.currentTarget.dataset
+    console.log(index);
+    this.setData({
+      currentIndex:index
+    });
   }
+
 })

@@ -1,6 +1,10 @@
 //app.js
 App({
   onLaunch: function () {
+
+    console.log('小程序启动-onLaunch');
+
+
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -33,7 +37,17 @@ App({
       }
     })
   },
+  onShow() {
+    console.log('小程序-onshow')
+  },
+  onHide() {
+    console.log('小程序-onhide')
+  },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    info:'我是app.js中的数据'
+  },
+  shuju:{
+    name:'1906A'
   }
 })
