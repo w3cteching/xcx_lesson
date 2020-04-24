@@ -5,6 +5,7 @@ const app = getApp()
 Page({
   //相当于vue中的data,存放页面内部的数据
   data: {
+    isShow:true,
     c:'#0f0',
     motto: 'Hello 微信小程序',
     title:'小程序第一天学习',
@@ -14,6 +15,13 @@ Page({
       { id:1002,name:'盖威',age:20,work:'java' },
       { id:1003,name:'王迪',age:20,work:'UI' },
       { id:1004,name:'苏宇浩',age:20,work:'PHP' },
+    ],
+    goodsNav:[
+      { id: 1001, title: '京东电器', url:'/pages/goods/goods?title=京东电器'},
+      { id: 1002, title: '京东数码', url:'/pages/goods/goods?title=京东数码'},
+      { id: 1003, title: '京东服饰', url:'/pages/goods/goods?title=京东服饰'},
+      { id: 1004, title: '京东生鲜', url:'/pages/goods/goods?title=京东生鲜'},
+      { id: 1005, title: '京东到家', url:'/pages/goods/goods?title=京东到家'},
     ],
     userInfo: {},
     hasUserInfo: false,

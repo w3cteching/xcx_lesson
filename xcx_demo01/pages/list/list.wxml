@@ -1,0 +1,5 @@
+<view>
+  <text>列表页面</text>
+
+  <button catchtap="goBack">返回</button>
+</view>

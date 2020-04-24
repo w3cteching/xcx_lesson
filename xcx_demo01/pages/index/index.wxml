@@ -10,16 +10,17 @@
   <view class="usermotto">
     <text class="user-motto">{{motto}}</text>
   </view> -->
+<!-- 
 
   <view>
     <text>{{ title }}</text>
-  </view>
+  </view> -->
 
 <!-- 
    <view>
      <text>{{ arr }}</text>
    </view> -->
-
+<!-- 
    <input placeholder="请输入内容" bindinput="add"></input>
 
    <view class="list" wx:if="{{ users.length>0 }}">
@@ -42,6 +43,40 @@
    </view>
    
 
-   <view wx:else>数据已经清空了</view>
+   <view wx:else>数据已经清空了</view> -->
+
+
+<!-- 首页-swiper -->
+
+<swiper class="sw" 
+        indicator-dots="{{ isShow }}"
+        indicator-color="#00f"
+        indicator-active-color="#f00"
+        autoplay="{{ true }}"
+        interval="3000"
+        circular="{{ true }}"
+>
+  <swiper-item>1111</swiper-item>
+  <swiper-item>22222</swiper-item>
+  <swiper-item>3333</swiper-item>
+  <swiper-item>44444</swiper-item>
+</swiper>
+
+
+
+  <!-- 遍历商品 -->
+
+  <view class="goodsGrid">
+
+     <view wx:for="{{ goodsNav }}" wx:key="{{ item.id }}">
+        <navigator url="{{ item.url }}" open-type="redirect">{{ item.title }}</navigator>
+     </view> 
+  
+  </view>
+
+
+
+
+
 
 </view>

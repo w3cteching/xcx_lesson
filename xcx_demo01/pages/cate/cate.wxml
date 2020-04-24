@@ -9,26 +9,25 @@
   </view> -->
 
 
-   <view class="tab">
-      <view class="tab-nav">
-         <button 
-                class="btn {{ index===currentIndex ? 'active':'' }}"
-                 wx:for="{{ cateInfo }}"
-                 catchtap="changeItem"
-                 data-index="{{ index }}"
-         >
-            <text>{{ item.cname }}</text>
-         </button>
-      </view>
-      <view class="tab-con" wx:for="{{ cateInfo }}" wx:if="{{ index===currentIndex }}">
-        <text>{{ item.content }}</text>
-      </view>
-   </view>
+  <view class="tab">
+    <view class="tab-nav">
+      <button class="btn {{ index===currentIndex ? 'active':'' }}" wx:for="{{ cateInfo }}" catchtap="changeItem" data-index="{{ index }}">
+        <text>{{ item.cname }}</text>
+      </button>
+    </view>
+    <view class="tab-con" wx:for="{{ cateInfo }}" wx:if="{{ index===currentIndex }}">
+      <text>{{ item.content }}</text>
+    </view>
+  </view>
 
 
-   <view>
+  <view>
     <text>{{ testData }}</text>
-   </view>
+  </view>
+
+  <view>
+    <button catchtap="goToList">打开列表页</button>
+  </view>
 
 
 </view>

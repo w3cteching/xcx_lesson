@@ -24,3 +24,25 @@
 .item {
   line-height:160rpx;
 }
+
+
+.goodsGrid {
+  display: flex;
+  width:100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.goodsGrid view {
+  flex:1;
+  /* border:1px solid #f00; */
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+
+}
+
+.sw {
+  border:1px solid #f00;
+}

@@ -36,6 +36,32 @@ Page({
     this.setData({
       currentIndex:index
     });
+  },
+  //跳转到列表页
+  goToList() {
+   let title="动态获取的标题"
+   let id=1001;
+   wx.navigateTo({
+     url: `/pages/list/list?title=${title}&id=${id}`,
+   })
+
+    // wx.switchTab({
+    //   url: '/pages/shopcart/shopcart',
+    // })
+
+
+  //  wx.reLaunch({
+  //    url: `/pages/list/list?title=${title}&id=${id}`,
+  //   // url:'/pages/shopcart/shopcart'
+  //  })
+
+    // wx.redirectTo({
+    //   url: `/pages/list/list?title=${title}&id=${id}`,
+    // })
+
+  
+
+
   }
 
 })
