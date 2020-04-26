@@ -1,66 +1,103 @@
-// pages/shopcart/shopcart.js
+
+const  urls =require('../../api/urls.js');
+
+
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+     movieArr:[],
+     loading:true,
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  onLoad() {
+    this.ctx = wx.createCameraContext()
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  takePhoto() {
+    this.ctx.takePhoto({
+      quality: 'high',
+      success: (res) => {
+        this.setData({
+          src: res.tempImagePath
+        })
+      }
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  startRecord() {
+    this.ctx.startRecord({
+      success: (res) => {
+        console.log('startRecord')
+      }
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  stopRecord() {
+    this.ctx.stopRecord({
+      success: (res) => {
+        this.setData({
+          src: res.tempThumbPath,
+          videoSrc: res.tempVideoPath
+        })
+      }
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  error(e) {
+    console.log(e.detail)
   },
+  getData() {
+    let {loading}=this.data;
+    if(loading) {
+      wx.showLoading()
+    }
+   
+    wx.request({
+      
+      //请求接口地址
+      url: urls.movie250,
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
+      //请求方式
+      method:"GET",
 
-  },
+      //设置向后台传递的参数
+      data:{
+          start:2,
+          count:10
+      },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
+      //设置请求头
+      header:{
+        'content-type':'application/text'
+      },
 
-  },
+      //请求成功时执行
+      success:res=> {
+       
+        console.log('res:',res);
+        if(res.statusCode===200) {
+          this.setData({
+            movieArr:res.data.subjects,
+            loading:false
+          });
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
+         if(!this.data.loading) {
+            wx.hideLoading();
+          }
+
+
+        }
+      },
+
+      //请求接口有误时，执行
+      fail(error) {
+        console.log('请求失败，请检查',error)
+      },
+
+      //无论请求成功与失败，都会执行
+      complete() {
+        console.log('请求完成')
+      }
+    })
 
   }
 })

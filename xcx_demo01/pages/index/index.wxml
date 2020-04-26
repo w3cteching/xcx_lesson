@@ -56,8 +56,12 @@
         interval="3000"
         circular="{{ true }}"
 >
-  <swiper-item>1111</swiper-item>
-  <swiper-item>22222</swiper-item>
+  <swiper-item>
+    <image src="https://imgcps.jd.com/ling4/100006713417/5omL5py66LSt5a6e5oOg/5aSH6LSn6LaF5YC8/p-5c17126882acdd181dd53ce0/926bd6c3/cr_1125x445_0_171/s1125x690/q70.jpg"></image>
+  </swiper-item>
+  <swiper-item>
+    <image src="https://m.360buyimg.com/mobilecms/s700x280_jfs/t1/31162/17/1128/101786/5c46ead8E22ee9740/f66061da227c1965.jpg!cr_1125x445_0_171!q70.jpg.dpg"></image>
+  </swiper-item>
   <swiper-item>3333</swiper-item>
   <swiper-item>44444</swiper-item>
 </swiper>
@@ -73,6 +77,52 @@
      </view> 
   
   </view>
+
+  <view class="list">
+    <scroll-view 
+          style="height:150rpx;"
+          scroll-y="{{ true }}"
+          bindscrolltoupper="topFn"
+          bindscrolltolower="bottomFn"
+      >
+       <view wx:for="{{ users }}" wx:key="{{ index }}">
+          <text>{{ item.name }}</text>
+       </view>
+    </scroll-view>
+
+ <!-- <scroll-view class="scroll-list" scroll-x="{{ true }}" style="white-space: nowrap; width:750rpx;">
+       <view wx:for="{{ users }}" 
+             wx:key="{{ index }}"
+             style=" width: 100px; height: 100px; display: inline-block"
+        >
+          <text>{{ item.name }}</text>
+       </view>
+ </scroll-view> -->
+  </view>
+
+
+<icon type="success" size="50" color="#f00"></icon>
+
+<button
+   disabled="{{ false }}"
+    open-type="getUserInfo"
+    bindgetuserinfo="getUser"
+>登录</button>
+
+<view>获取用户信息：</view>
+<view>
+  <text>用户名 ：{{ userdata.nickName }}</text>
+  <view>用户图像：</view>
+  <image src="{{ userdata.avatarUrl }}"></image>
+
+  <view>
+  <!-- <button 
+      open-type="getPhoneNumber"
+      bindgetphonenumber="getphone"
+  >获取手机号
+  </button> -->
+</view>
+</view>
 
 
 

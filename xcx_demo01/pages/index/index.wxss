@@ -46,3 +46,8 @@
 .sw {
   border:1px solid #f00;
 }
+
+.sw image {
+  width:100%;
+}
+

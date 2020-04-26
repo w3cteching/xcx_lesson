@@ -5,6 +5,7 @@ const app = getApp()
 Page({
   //相当于vue中的data,存放页面内部的数据
   data: {
+    userdata:{},
     isShow:true,
     c:'#0f0',
     motto: 'Hello 微信小程序',
@@ -14,7 +15,14 @@ Page({
       { id:1001,name:'姚杰',age:20,work:'前端开发' },
       { id:1002,name:'盖威',age:20,work:'java' },
       { id:1003,name:'王迪',age:20,work:'UI' },
-      { id:1004,name:'苏宇浩',age:20,work:'PHP' },
+      { id:1004,name:'苏宇浩1',age:20,work:'PHP' },
+      { id:1004,name:'苏宇浩2',age:20,work:'PHP' },
+      { id:1004,name:'苏宇浩3',age:20,work:'PHP' },
+      { id:1004,name:'苏宇浩4',age:20,work:'PHP' },
+      { id:1004,name:'苏宇浩5',age:20,work:'PHP' },
+      { id:1004,name:'苏宇浩6',age:20,work:'PHP' },
+      { id:1004,name:'苏宇浩7',age:20,work:'PHP' },
+      { id:1004,name:'苏宇浩8',age:20,work:'PHP' },
     ],
     goodsNav:[
       { id: 1001, title: '京东电器', url:'/pages/goods/goods?title=京东电器'},
@@ -110,5 +118,20 @@ Page({
      'users[2].name':'王迪哈哈'
     });
 
+  },
+  topFn(e) {
+    console.log('已经到顶部：',e)
+  },
+  bottomFn(e) {
+    console.log('已经到底部：', e)
+  },
+  getUser(e) {
+    console.log('获取用户信息：',e)
+    this.setData({
+      userdata:e.detail.userInfo
+    });
+  },
+  getphone(e) {
+    console.log('用户手机号信息：',e);
   }
 })
