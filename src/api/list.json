@@ -1,5 +1,7 @@
-{
-	"result": [{
+{	"status":0,
+	"err_msg":"ok",
+	"result": [
+		{
 		"_id": "59f087ef11945e2760c852dd",
 		"title": "笔记本电脑",
 		"cid": "59f1e4919bfd8f3bd030eed6",

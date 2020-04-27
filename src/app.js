@@ -1,4 +1,11 @@
-//app.js
+
+//引入list接口
+require('/api/list.js');
+
+//引入用户接口
+
+//引入xxxx接口
+
 App({
   onLaunch: function () {
 
@@ -45,9 +52,9 @@ App({
   },
   globalData: {
     userInfo: null,
-    info:'我是app.js中的数据'
+    info: '我是app.js中的数据'
   },
-  shuju:{
-    name:'1906A'
+  shuju: {
+    name: '1906A'
   }
 })
