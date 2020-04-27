@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "Dialog":"/public/components/dialog/dialog"
+  },
   "navigationBarTitleText": "电商首页"
 }

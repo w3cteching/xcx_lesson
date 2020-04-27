@@ -1,0 +1,13 @@
+/* public/template/list/list.wxss */
+
+.list_container{
+  height: 300rpx;
+  border:1px solid #f00;
+  padding:20rpx;
+}
+
+.list_tpl_title {
+  padding: 10rpx 0;
+  border-bottom:1px dashed #ccc;
+  
+}

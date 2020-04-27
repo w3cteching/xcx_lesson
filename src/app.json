@@ -5,7 +5,8 @@
     "pages/cate/cate",
     "pages/shopcart/shopcart",
     "pages/list/list",
-    "pages/goods/goods"
+    "pages/goods/goods",
+    "public/template/list/list"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -16,7 +17,7 @@
   "style": "v2",
   "sitemapLocation": "sitemap.json",
   "tabBar": {
-    "custom":false,
+    "custom": false,
     "color": "#000",
     "selectedColor": "#d4237a",
     "list": [

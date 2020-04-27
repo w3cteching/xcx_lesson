@@ -67,63 +67,17 @@
 </swiper>
 
 
-
-  <!-- 遍历商品 -->
-
-  <view class="goodsGrid">
-
-     <view wx:for="{{ goodsNav }}" wx:key="{{ item.id }}">
-        <navigator url="{{ item.url }}" open-type="redirect">{{ item.title }}</navigator>
-     </view> 
-  
-  </view>
-
-  <view class="list">
-    <scroll-view 
-          style="height:150rpx;"
-          scroll-y="{{ true }}"
-          bindscrolltoupper="topFn"
-          bindscrolltolower="bottomFn"
-      >
-       <view wx:for="{{ users }}" wx:key="{{ index }}">
-          <text>{{ item.name }}</text>
-       </view>
-    </scroll-view>
-
- <!-- <scroll-view class="scroll-list" scroll-x="{{ true }}" style="white-space: nowrap; width:750rpx;">
-       <view wx:for="{{ users }}" 
-             wx:key="{{ index }}"
-             style=" width: 100px; height: 100px; display: inline-block"
-        >
-          <text>{{ item.name }}</text>
-       </view>
- </scroll-view> -->
-  </view>
-
-
-<icon type="success" size="50" color="#f00"></icon>
-
-<button
-   disabled="{{ false }}"
-    open-type="getUserInfo"
-    bindgetuserinfo="getUser"
->登录</button>
-
-<view>获取用户信息：</view>
 <view>
-  <text>用户名 ：{{ userdata.nickName }}</text>
-  <view>用户图像：</view>
-  <image src="{{ userdata.avatarUrl }}"></image>
 
-  <view>
-  <!-- <button 
-      open-type="getPhoneNumber"
-      bindgetphonenumber="getphone"
-  >获取手机号
-  </button> -->
-</view>
-</view>
+  <button bindtap="openDialog">打开弹框</button>
 
+  <Dialog 
+      id="dialog"
+      title="马上开会了"
+      content="讨论高薪就业的事情"
+      ></Dialog>
+
+</view>
 
 
 

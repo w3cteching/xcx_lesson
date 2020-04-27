@@ -72,6 +72,8 @@ Page({
   },
   onReady() {
     console.log('index-onReady')
+    //获取组件id
+    this.dialog = this.selectComponent('#dialog');
   },
   onShow() {
     console.log('index-onShow')
@@ -133,5 +135,12 @@ Page({
   },
   getphone(e) {
     console.log('用户手机号信息：',e);
+  },
+  //打开弹框
+  openDialog() {
+
+    //console.log(this.dialog.data.isShow);
+    this.dialog.toggle();
+
   }
 })

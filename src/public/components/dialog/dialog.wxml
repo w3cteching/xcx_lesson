@@ -1,0 +1,13 @@
+<view class="dialog-box" wx:if="{{ isShow }}">
+    <view class="dialog_main">
+       <view class="dialog_main_content">
+           <view class="dialog_main_title">{{ title }}</view>
+           <view class="dialog_main_con">{{ content }}</view>
+       </view>
+       <view class="dialog_main_btns">
+          <button bindtap="confirm">确定</button>
+          <button bindtap="cancel">取消</button>
+       </view>
+    </view>
+    <view class="dialog_mask"></view>
+</view> 

@@ -1,0 +1,10 @@
+<template name="list_tpl">
+  <view class="list_container">
+     <view class="list_tpl_title">{{ title }}</view>
+     <view class="list_tpl_con">
+        <view wx:for="{{ content }}">
+            <view>{{ item.moviename }}</view>
+        </view>
+     </view>
+  </view>
+</template>

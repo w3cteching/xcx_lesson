@@ -10,7 +10,33 @@ Page({
   data: {
     movieArr: [],
     loading: true,
-    resultArr: []
+    resultArr: [],
+    listData:[
+      { title:'热门电影',
+        content:[
+          { id:1001,moviename:'热门电影1' },
+          { id:1002,moviename:'热门电影2' },
+          { id:1003,moviename:'热门电影3' },
+        ]
+      },
+      {
+        title: '即将上映电影',
+        content: [
+          { id: 1001, moviename: '即将上映电影电影1' },
+          { id: 1002, moviename: '即将上映电影电影2' },
+          { id: 1003, moviename: '热门电影3' },
+        ]
+      },
+      {
+        title: '榜单电影',
+        content: [
+          { id: 1001, moviename: '榜单电影1' },
+          { id: 1002, moviename: '榜单电影2' },
+          { id: 1003, moviename: '榜单电影3' },
+        ]
+      }
+
+    ]
   },
   onLoad() {
     this.ctx = wx.createCameraContext()

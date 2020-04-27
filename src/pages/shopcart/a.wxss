@@ -1,4 +1,3 @@
 .list_container{
-  height: 100rpx;
   border:1px solid #f00;
 }
