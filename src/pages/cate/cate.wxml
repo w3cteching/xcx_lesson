@@ -82,6 +82,11 @@
 
 <TestCom title="{{ title }}" content="分类内容" />
 
+<!-- <van-calendar show="{{ show }}" bind:close="onClose" bind:confirm="onConfirm" /> -->
 
+
+<van-rate value="3" bind:change="onChange" />
+
+<van-circle layer-color="#ccc" value="{{ value }}" color="{{ gradientColor }}" text="渐变色" />
 
 </view>

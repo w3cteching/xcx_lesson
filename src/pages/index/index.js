@@ -5,51 +5,60 @@ const app = getApp()
 Page({
   //相当于vue中的data,存放页面内部的数据
   data: {
-    typeInfo:'',
-    userdata:{},
-    isShow:true,
-    c:'#0f0',
-    motto: 'Hello 微信小程序',
-    title:'小程序第一天学习',
-    arr:['vue','react','Flutter'],
-    users:[
-      { id:1001,name:'姚杰',age:20,work:'前端开发' },
-      { id:1002,name:'盖威',age:20,work:'java' },
-      { id:1003,name:'王迪',age:20,work:'UI' },
-      { id:1004,name:'苏宇浩1',age:20,work:'PHP' },
-      { id:1004,name:'苏宇浩2',age:20,work:'PHP' },
-      { id:1004,name:'苏宇浩3',age:20,work:'PHP' },
-      { id:1004,name:'苏宇浩4',age:20,work:'PHP' },
-      { id:1004,name:'苏宇浩5',age:20,work:'PHP' },
-      { id:1004,name:'苏宇浩6',age:20,work:'PHP' },
-      { id:1004,name:'苏宇浩7',age:20,work:'PHP' },
-      { id:1004,name:'苏宇浩8',age:20,work:'PHP' },
+    showActionsheet: false,
+    groups: [
+      { text: '示例菜单', value: 1 },
+      { text: '示例菜单', value: 2 },
+      { text: '负向菜单', type: 'warn', value: 3 }
     ],
-    goodsNav:[
-      { id: 1001, title: '京东电器', url:'/pages/goods/goods?title=京东电器'},
-      { id: 1002, title: '京东数码', url:'/pages/goods/goods?title=京东数码'},
-      { id: 1003, title: '京东服饰', url:'/pages/goods/goods?title=京东服饰'},
-      { id: 1004, title: '京东生鲜', url:'/pages/goods/goods?title=京东生鲜'},
-      { id: 1005, title: '京东到家', url:'/pages/goods/goods?title=京东到家'},
+    typeInfo: '',
+    userdata: {},
+    isShow: false,
+    c: '#0f0',
+    motto: 'Hello 微信小程序',
+    title: '小程序第一天学习',
+    arr: ['vue', 'react', 'Flutter'],
+    users: [
+      { id: 1001, name: '姚杰', age: 20, work: '前端开发' },
+      { id: 1002, name: '盖威', age: 20, work: 'java' },
+      { id: 1003, name: '王迪', age: 20, work: 'UI' },
+      { id: 1004, name: '苏宇浩1', age: 20, work: 'PHP' },
+      { id: 1004, name: '苏宇浩2', age: 20, work: 'PHP' },
+      { id: 1004, name: '苏宇浩3', age: 20, work: 'PHP' },
+      { id: 1004, name: '苏宇浩4', age: 20, work: 'PHP' },
+      { id: 1004, name: '苏宇浩5', age: 20, work: 'PHP' },
+      { id: 1004, name: '苏宇浩6', age: 20, work: 'PHP' },
+      { id: 1004, name: '苏宇浩7', age: 20, work: 'PHP' },
+      { id: 1004, name: '苏宇浩8', age: 20, work: 'PHP' },
+    ],
+    goodsNav: [
+      { id: 1001, title: '京东电器', url: '/pages/goods/goods?title=京东电器' },
+      { id: 1002, title: '京东数码', url: '/pages/goods/goods?title=京东数码' },
+      { id: 1003, title: '京东服饰', url: '/pages/goods/goods?title=京东服饰' },
+      { id: 1004, title: '京东生鲜', url: '/pages/goods/goods?title=京东生鲜' },
+      { id: 1005, title: '京东到家', url: '/pages/goods/goods?title=京东到家' },
     ],
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   //事件处理函数
-  bindViewTap: function() {
+  bindViewTap: function () {
     wx.navigateTo({
       url: '../logs/logs'
     })
   },
   onLoad() {
+    
+
+    
     console.log('页面onload')
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
       })
-    } else if (this.data.canIUse){
+    } else if (this.data.canIUse) {
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
       app.userInfoReadyCallback = res => {
@@ -85,7 +94,7 @@ Page({
   onUnload() {
     console.log('index-onUnload')
   },
-  getUserInfo: function(e) {
+  getUserInfo: function (e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
@@ -94,60 +103,64 @@ Page({
     })
   },
   delete(e) {
-  //  console.log('删除',e)
-    let { idx }=e.currentTarget.dataset;//ES6解构赋值的写法
-    console.log('删除前：',this.data.users)
+    //  console.log('删除',e)
+    let { idx } = e.currentTarget.dataset;//ES6解构赋值的写法
+    console.log('删除前：', this.data.users)
 
-    this.data.users.splice(idx,1);
+    this.data.users.splice(idx, 1);
     this.setData({
       users: this.data.users, //简单粗爆
     })
 
-    console.log('删除后：',this.data.users)
+    console.log('删除后：', this.data.users)
   },
   add(e) {
-    console.log('添加的值：',e)
+    console.log('添加的值：', e)
   },
   modi(e) {
     let { idx } = e.currentTarget.dataset;//ES6解构赋值的写法
-    let title="ok"
+    let title = "ok"
 
-   // this.data.users[idx].name = this.data.users[idx].name+title;
-   //let tempItem='users['+idx+'].name'
-   let tempItem=`users[${idx}].name`;
+    // this.data.users[idx].name = this.data.users[idx].name+title;
+    //let tempItem='users['+idx+'].name'
+    let tempItem = `users[${idx}].name`;
 
     this.setData({
-     // [tempItem]: this.data.users[idx].name+title
-     'users[2].name':'王迪哈哈'
+      // [tempItem]: this.data.users[idx].name+title
+      'users[2].name': '王迪哈哈'
     });
 
   },
   topFn(e) {
-    console.log('已经到顶部：',e)
+    console.log('已经到顶部：', e)
   },
   bottomFn(e) {
     console.log('已经到底部：', e)
   },
   getUser(e) {
-    console.log('获取用户信息：',e)
+    console.log('获取用户信息：', e)
     this.setData({
-      userdata:e.detail.userInfo
+      userdata: e.detail.userInfo
     });
   },
   getphone(e) {
-    console.log('用户手机号信息：',e);
+    console.log('用户手机号信息：', e);
   },
   //打开弹框
   openDialog() {
 
     //console.log(this.dialog.data.isShow);
-    this.dialog.toggle();
+   // this.dialog.toggle();
+   this.setData({
+    // isShow:true,
+     showActionsheet:true
+   })
 
   },
   //监听并接收dialog传递过来的数据
   getConfirmFn(e) {
-    let str=e.detail.typeInfo
-   
+    let str = e.detail.typeInfo
+
     this.setData({
       typeInfo: str
     })
@@ -156,5 +169,40 @@ Page({
   parentBox() {
 
     console.log('触发了parentBox')
+  },
+  tapDialogButton(e) {
+
+    console.log('测试weui-dialog', e)
+    let { index } = e.detail;
+    console.log(index)
+
+    if (index === 1) {
+      console.log('我点击了确定按钮')
+      this.setData({
+        isShow: false
+      })
+    } else if (index === 0) {
+      console.log('我点击了取消按钮')
+
+      this.setData({
+        isShow: false
+      })
+
+    }
+
+
+  },
+  close: function () {
+    this.setData({
+      showActionsheet: false
+    })
+  },
+  btnClick(e) {
+    console.log(e)
+    this.close()
+  },
+  slideButtonTap(e) {
+    console.log('slide button tap', e.detail)
   }
+
 })

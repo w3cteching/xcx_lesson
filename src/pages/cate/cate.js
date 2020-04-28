@@ -11,6 +11,12 @@ Page({
    * 页面的初始数据
    */
   data: {
+    value: 25,
+    gradientColor: {
+      '0%': '#ffd01e',
+      '100%': '#ee0a24'
+    },
+    show:true,
     title:'分类页面的标题',
     region: ['广东省', '广州市', '海珠区'],
     customItem: '全部',
@@ -87,6 +93,27 @@ Page({
   },
   testswitch(e) {
     console.log(e)
+  },
+
+  onClose() {
+    this.setData({ show: false });
+  },
+  formatDate(date) {
+    date = new Date(date);
+    return `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日`;
+  },
+  onConfirm(event) {
+    console.log(this.formatDate(event.detail))
+    this.setData({
+      show: false,
+      date: this.formatDate(event.detail)
+    });
+  },
+  onChange(event) {
+    console.log('星星：',event.detail)
+    this.setData({
+      value: event.detail
+    });
   }
 
 })
