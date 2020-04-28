@@ -67,20 +67,23 @@
 </swiper>
 
 
-<view>
+<view bindtap="parentBox">
 
-  <button bindtap="openDialog">打开弹框</button>
+  <button catchtap="openDialog">打开弹框</button>
 
-  <Dialog 
-      id="dialog"
-      title="马上开会了"
-      content="讨论高薪就业的事情"
-      ></Dialog>
+  <Dialog my-bg="bg"  id="dialog" title="马上开会了" content="讨论高薪就业的事情" bindconfirm="getConfirmFn">  
+  
+  <!-- <view slot="before">index前添加的数据</view>    
+
+  <view slot="after">index后添加的数据</view> -->
+  
+  
+  </Dialog>
 
 </view>
 
 
-
+<view> {{typeInfo }}</view>
 
 
 </view>

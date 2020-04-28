@@ -8,7 +8,7 @@
       </view>
   </view> -->
 
-
+<!-- 
   <view class="tab">
     <view class="tab-nav">
       <button class="btn {{ index===currentIndex ? 'active':'' }}" wx:for="{{ cateInfo }}" catchtap="changeItem" data-index="{{ index }}">
@@ -77,5 +77,11 @@
 
 
 
-<switch bindchange="testswitch"></switch>
+<switch bindchange="testswitch"></switch> -->
+
+
+<TestCom title="{{ title }}" content="分类内容" />
+
+
+
 </view>

@@ -10,3 +10,14 @@
   box-sizing: border-box;
 } 
 
+
+.box {
+  border:1px solid #f00;
+  height: 60rpx;
+}
+
+.bg {
+  background: #00f;
+  color:#fff;
+}
+

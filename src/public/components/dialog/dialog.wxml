@@ -1,12 +1,19 @@
 <view class="dialog-box" wx:if="{{ isShow }}">
     <view class="dialog_main">
        <view class="dialog_main_content">
-           <view class="dialog_main_title">{{ title }}</view>
-           <view class="dialog_main_con">{{ content }}</view>
+          <slot name="before"></slot>
+           <view class="dialog_main_title box">{{ title }}</view>
+           <view class="dialog_main_con my-bg">{{ content }}</view>
+           <slot name="after"></slot>
        </view>
-       <view class="dialog_main_btns">
-          <button bindtap="confirm">确定</button>
-          <button bindtap="cancel">取消</button>
+       <view class="dialog_main_btns" bindtap="tapFn">
+          <!-- <button bindtap="confirm">确定</button>
+          <button bindtap="cancel">取消</button> -->
+
+          <button data-type="confirm">确定</button>
+          <button data-type="cancel">取消</button>
+
+
        </view>
     </view>
     <view class="dialog_mask"></view>

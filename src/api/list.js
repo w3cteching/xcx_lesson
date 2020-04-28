@@ -1,5 +1,6 @@
 var Mock = require("../utils/WxMock.js");
 
+//创建mock数据
 let dataObj = {
   "status": 0,
   "err_msg": "ok",

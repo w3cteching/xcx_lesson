@@ -5,6 +5,7 @@ const app = getApp()
 Page({
   //相当于vue中的data,存放页面内部的数据
   data: {
+    typeInfo:'',
     userdata:{},
     isShow:true,
     c:'#0f0',
@@ -142,5 +143,18 @@ Page({
     //console.log(this.dialog.data.isShow);
     this.dialog.toggle();
 
+  },
+  //监听并接收dialog传递过来的数据
+  getConfirmFn(e) {
+    let str=e.detail.typeInfo
+   
+    this.setData({
+      typeInfo: str
+    })
+
+  },
+  parentBox() {
+
+    console.log('触发了parentBox')
   }
 })

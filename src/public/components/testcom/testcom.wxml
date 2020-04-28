@@ -1,0 +1,3 @@
+<view>
+  <text>测试组件---{{ title }}---{{ content }}</text>
+</view>
