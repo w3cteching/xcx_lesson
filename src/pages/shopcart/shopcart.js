@@ -1,6 +1,8 @@
-const urls = require('../../api/urls.js');
 
+//获取app.js实例
+const app = getApp();
 
+let { movie250 } = require('../../api/urls.js');
 
 Page({
 
@@ -8,158 +10,101 @@ Page({
    * 页面的初始数据
    */
   data: {
-    movieArr: [],
-    loading: true,
-    resultArr: [],
-    listData:[
-      { title:'热门电影',
-        content:[
-          { id:1001,moviename:'热门电影1' },
-          { id:1002,moviename:'热门电影2' },
-          { id:1003,moviename:'热门电影3' },
-        ]
-      },
-      {
-        title: '即将上映电影',
-        content: [
-          { id: 1001, moviename: '即将上映电影电影1' },
-          { id: 1002, moviename: '即将上映电影电影2' },
-          { id: 1003, moviename: '热门电影3' },
-        ]
-      },
-      {
-        title: '榜单电影',
-        content: [
-          { id: 1001, moviename: '榜单电影1' },
-          { id: 1002, moviename: '榜单电影2' },
-          { id: 1003, moviename: '榜单电影3' },
-        ]
-      }
-
-    ]
+    list: [],
+    page: 1,  //默认第1页开始
+    count: 5, //默认每页显示5条
+    flag: true,
+    width:500,
+    height:800, 
   },
   onLoad() {
-    this.ctx = wx.createCameraContext()
+    this.getMovieList();
   },
-  takePhoto() {
-    this.ctx.takePhoto({
-      quality: 'high',
-      success: (res) => {
+  //获取电影列表
+  getMovieList() {
+
+    //获取系统信息
+    wx.getSystemInfo({
+
+      success: (res)=>{
+        console.log(res)
         this.setData({
-          src: res.tempImagePath
-        })
-      }
-    })
-  },
-  startRecord() {
-    this.ctx.startRecord({
-      success: (res) => {
-        console.log('startRecord')
-      }
-    })
-  },
-  stopRecord() {
-    this.ctx.stopRecord({
-      success: (res) => {
-        this.setData({
-          src: res.tempThumbPath,
-          videoSrc: res.tempVideoPath
-        })
-      }
-    })
-  },
-  error(e) {
-    console.log(e.detail)
-  },
-  getData() {
-    let {
-      loading
-    } = this.data;
-    if (loading) {
-      wx.showLoading()
-    }
-
-    wx.request({
-
-      //请求接口地址
-      url: urls.movie250,
-
-      //请求方式
-      method: "GET",
-
-      //设置向后台传递的参数
-      data: {
-        start: 2,
-        count: 10
+          height:res.windowHeight
+        });
       },
+    })
 
-      //设置请求头
+
+    /**
+     * 分页原理：
+     * page（页码） start(下标) count（每页显示的条数）
+     *   1             0          5
+     *   2             5          5
+     *   3             10         5
+     *   4             15         5
+     * 
+     * start=(page-1)*count
+     */
+
+
+    //进入获取列表函数直接将flag置为false
+    this.setData({ flag: false })
+
+
+    //进入先显示loading
+    wx.showLoading({
+      // title: '正在玩命加载中',
+    })
+
+    let { page, count, list } = this.data;
+
+    //请求数据
+    wx.request({
+      url: movie250,
       header: {
         'content-type': 'application/text'
       },
+      data: {
+        start: (page - 1) * count,
+        count
 
-      //请求成功时执行
-      success: res => {
+      },
+      success: (res) => {
+        console.log(res)
 
-        console.log('res:', res);
         if (res.statusCode === 200) {
+          page++;
+
+          //将获取的数据条数与数组原来的合并
+          list = list.concat(res.data.subjects);
           this.setData({
-            movieArr: res.data.subjects,
-            loading: false
+            list: list,
+            page,
+            flag: true
           });
 
-          if (!this.data.loading) {
-            wx.hideLoading();
-          }
-
-
+          //加载成功隐藏loading
+          wx.hideLoading()
         }
-      },
-
-      //请求接口有误时，执行
-      fail(error) {
-        console.log('请求失败，请检查', error)
-      },
-
-      //无论请求成功与失败，都会执行
-      complete() {
-        console.log('请求完成')
       }
+
     })
 
   },
-  //获取线上json
-  getJSON() {
+  //实现上拉触底加载更多
+  // onReachBottom() {
+  //   //如何防止多次请求，主要思想：设置状态标志
+  //   if (this.data.flag) {
+  //     this.getMovieList();
+  //   }
+  // }
 
-    wx.request({
-      url: 'http://127.0.0.1:9999/list.json',
-      header: {
-        'content-type': 'application/json'
-      },
-      success: (res) => {
-        console.log('json11111:', res)
-
-      }
-    })
-
-  },
-
-  //测试mock数据请求
-  getMockData() {
-    console.log(11111)
-    wx.request({
-      url: 'https://www.1906A.com/api/goodslist',
-      header: {
-        'content-type': 'application/json'
-      },
-      success: (res) => {
-        console.log('mock返回的数据', res);
-
-        this.setData({
-          resultArr: res.result
-        });
-      }
-    })
-
+  lower() {
+    console.log('上拉加载')
+    //如何防止多次请求，主要思想：设置状态标志
+    if (this.data.flag) {
+      this.getMovieList();
+    }
   }
+
 })

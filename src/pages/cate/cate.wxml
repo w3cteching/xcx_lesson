@@ -1,92 +1,9 @@
-<view class="v1" catchtap="fn3">
-  <!-- <text>这是分类页面</text>
-
-  <view class="v2" catchtap="fn2">
-      <text>v2</text>
-      <view catchtap="fn1">
-         <text>v3</text>
-      </view>
-  </view> -->
-
-<!-- 
-  <view class="tab">
-    <view class="tab-nav">
-      <button class="btn {{ index===currentIndex ? 'active':'' }}" wx:for="{{ cateInfo }}" catchtap="changeItem" data-index="{{ index }}">
-        <text>{{ item.cname }}</text>
-      </button>
-    </view>
-    <view class="tab-con" wx:for="{{ cateInfo }}" wx:if="{{ index===currentIndex }}">
-      <text>{{ item.content }}</text>
-    </view>
+<view class="movie_list">
+  
+  <view class="movie_item" 
+  wx:for="{{ list }}" wx:key="item.id">
+     <image src="{{ item.images.small }}" />
+     <text>{{ item.title }}</text>
   </view>
-
-
-  <view>
-    <text>{{ testData }}</text>
-  </view>
-
-  <view>
-    <button catchtap="goToList">打开列表页</button>
-  </view>
-
-
-  <view>
-
-    <checkbox-group bindchange="getValue">
-      <checkbox checked="{{ true }}" value="苹果">苹果
-      </checkbox>
-
-      <checkbox value="香蕉">香蕉
-      </checkbox>
-
-      <checkbox value="梨">梨
-      </checkbox>
-
-    </checkbox-group>
-
-    <view>您选中的商品如下：</view>
-    <view class="selectFruit">
-      <view wx:for="{{ selectFruit }}">
-        <text>{{ item }}</text>
-      </view>
-    </view>
-  </view>
-
-
-  <view>picker组件</view>
-
-   <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
-    <view class="picker">
-      当前选择：{{array[index]}}
-    </view>
-  </picker>
-
-  <view>省市区三级联动</view>
-
-  <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
-    <view class="picker">
-      当前选择：{{region[0]}}，{{region[1]}}，{{region[2]}}
-    </view>
-  </picker>
-
-
-  <video src="http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400"
-    controls="{{ true }}"
-    autoplay="{{ false }}"
-  ></video>
-
-
-
-<switch bindchange="testswitch"></switch> -->
-
-
-<TestCom title="{{ title }}" content="分类内容" />
-
-<!-- <van-calendar show="{{ show }}" bind:close="onClose" bind:confirm="onConfirm" /> -->
-
-
-<van-rate value="3" bind:change="onChange" />
-
-<van-circle layer-color="#ccc" value="{{ value }}" color="{{ gradientColor }}" text="渐变色" />
 
 </view>

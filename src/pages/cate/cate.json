@@ -1,4 +1,5 @@
-{
+{ 
+  "navigationBarTitleText": "分类",
   "usingComponents": {
     "TestCom":"/public/components/testcom/testcom",
     "van-calendar": "@vant/weapp/calendar/index",

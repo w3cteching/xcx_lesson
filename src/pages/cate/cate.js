@@ -2,8 +2,7 @@
 //获取app.js实例
 const app=getApp();
 
-console.log('app::::',app);
-
+let { movie250 }=require('../../api/urls.js');
 
 Page({
 
@@ -11,109 +10,80 @@ Page({
    * 页面的初始数据
    */
   data: {
-    value: 25,
-    gradientColor: {
-      '0%': '#ffd01e',
-      '100%': '#ee0a24'
-    },
-    show:true,
-    title:'分类页面的标题',
-    region: ['广东省', '广州市', '海珠区'],
-    customItem: '全部',
-    array: ['美国', '中国', '巴西', '日本'],
-    index:0,
-    currentIndex:0,
-    selectFruit:[],
-    testData: app.shuju.name,
-    cateInfo:[
-      {id:1001,cname:'服装',content:'服装的内容'},
-      { id: 1002, cname: '电子', content:'电子的内容'},
-      { id: 1003, cname: '玩具', content:'玩具的内容'},
-      { id: 1004, cname: '水果', content:'水果的内容'},
-    ]
+    list:[],
+    page:1,  //默认第1页开始
+    count:5, //默认每页显示5条
+    flag:true,
   },
-  fn1() {
-    console.log('触发了fn1')
+  onLoad() {
+    this.getMovieList();
   },
-  fn2() {
-    console.log('触发了fn2')
-  },
-  fn3() {
-    console.log('触发了fn3')
-  },
-  //tab切换方法
-  changeItem(e) {
-    let { index } = e.currentTarget.dataset
-    console.log(index);
-    this.setData({
-      currentIndex:index
-    });
-  },
-  //跳转到列表页
-  goToList() {
-   let title="动态获取的标题"
-   let id=1001;
-   wx.navigateTo({
-     url: `/pages/list/list?title=${title}&id=${id}`,
-   })
+  //获取电影列表
+  getMovieList() {
 
-    // wx.switchTab({
-    //   url: '/pages/shopcart/shopcart',
-    // })
+    console.log('加载')
+    /**
+     * 分页原理：
+     * page（页码） start(下标) count（每页显示的条数）
+     *   1             0          5
+     *   2             5          5
+     *   3             10         5
+     *   4             15         5
+     * 
+     * start=(page-1)*count
+     */
 
 
-  //  wx.reLaunch({
-  //    url: `/pages/list/list?title=${title}&id=${id}`,
-  //   // url:'/pages/shopcart/shopcart'
-  //  })
+   //进入获取列表函数直接将flag置为false
+     this.setData({flag:false})
 
-    // wx.redirectTo({
-    //   url: `/pages/list/list?title=${title}&id=${id}`,
-    // })
 
-  },
-  getValue(e) {
-    console.log('选中的信息：',e)
-    this.setData({
-      selectFruit:e.detail.value
-    });
-  },
-  bindPickerChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
-    this.setData({
-      index:e.detail.value
+    //进入先显示loading
+    wx.showLoading({
+     // title: '正在玩命加载中',
     })
-  },
-  //省市区三级联动
-  bindRegionChange(e) {
-    console.log('省市区三级联动',e)
-    this.setData({
-      region: e.detail.value
-    });
-  },
-  testswitch(e) {
-    console.log(e)
-  },
 
-  onClose() {
-    this.setData({ show: false });
+    let {page,count,list}=this.data;
+
+     //请求数据
+     wx.request({
+       url: movie250,
+       header:{
+         'content-type':'application/text'
+       },
+       data:{
+         start:(page-1)*count, 
+         count
+
+       },
+       success:(res) => {
+         console.log(res)
+
+          if(res.statusCode===200) {
+            page++;
+
+            //将获取的数据条数与数组原来的合并
+            list = list.concat(res.data.subjects);
+            this.setData({
+              list:list,
+              page,
+              flag:true
+            });
+
+            //加载成功隐藏loading
+            wx.hideLoading()
+          }
+       }
+
+     })
+
   },
-  formatDate(date) {
-    date = new Date(date);
-    return `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日`;
-  },
-  onConfirm(event) {
-    console.log(this.formatDate(event.detail))
-    this.setData({
-      show: false,
-      date: this.formatDate(event.detail)
-    });
-  },
-  onChange(event) {
-    console.log('星星：',event.detail)
-    this.setData({
-      value: event.detail
-    });
+  //实现上拉触底加载更多
+  onReachBottom() {
+    //如何防止多次请求，主要思想：设置状态标志
+    if(this.data.flag) {
+      this.getMovieList();
+    }
   }
 
 })
