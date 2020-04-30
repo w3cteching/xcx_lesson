@@ -1,3 +1,10 @@
+
+<import src="/wxParse/wxParse.wxml"/>
+
+
+
+
+
 <!--index.wxml-->
 <view class="container">
   <!-- <view class="userinfo">
@@ -87,6 +94,11 @@
 </mp-actionSheet>
 
 
+
+<view>
+
+<template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+</view>
 
 
 </view>

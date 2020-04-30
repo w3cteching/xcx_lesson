@@ -1,10 +1,9 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/shopcart/shopcart",
     "pages/cate/cate",
-    "pages/index/index",
     "pages/logs/logs",
-    
     "pages/list/list",
     "pages/goods/goods",
     "public/template/list/list"

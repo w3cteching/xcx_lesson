@@ -4,6 +4,8 @@ const app = getApp();
 
 let { movie250 } = require('../../api/urls.js');
 
+
+
 Page({
 
   /**

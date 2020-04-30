@@ -1,10 +1,19 @@
+var WxParse = require('../../wxParse/wxParse.js');
+
+
 //index.js
 //获取应用实例
 const app = getApp()
 
+
+//一定要注意下面的content是后台获取来的数据，我这里只是为了演示方便，给写到下边了
+let content = "<p><img class=\"img-ks-lazyload\" src=\"https://img.alicdn.com/imgextra/i1/4134225718/O1CN011s6tA1vX4G8hLLA_!!4134225718.jpg\" width=\"790\" align=\"absmiddle\" data-spm-anchor-id=\"a220o.1000855.0.i6.591c48abotbO5M\" /><img class=\"img-ks-lazyload\" src=\"https://img.alicdn.com/imgextra/i3/4134225718/O1CN011s6tA1vZ96eqZsr_!!4134225718.jpg\" width=\"790\" align=\"absmiddle\" data-spm-anchor-id=\"a220o.1000855.0.i7.591c48abotbO5M\" /><img class=\"img-ks-lazyload\" src=\"https://img.alicdn.com/imgextra/i2/4134225718/O1CN011s6tA3DLclskqs6_!!4134225718.jpg\" width=\"790\" align=\"absmiddle\" data-spm-anchor-id=\"a220o.1000855.0.i8.591c48abotbO5M\" /><img class=\"img-ks-lazyload\" src=\"https://img.alicdn.com/imgextra/i4/4134225718/O1CN011s6tA1DUHgPiE2d_!!4134225718.jpg\" width=\"790\" align=\"absmiddle\" data-spm-anchor-id=\"a220o.1000855.0.i9.591c48abotbO5M\" /><img class=\"img-ks-lazyload\" src=\"https://img.alicdn.com/imgextra/i3/4134225718/O1CN011s6t9vkup0LRlCG_!!4134225718.jpg\" width=\"790\" align=\"absmiddle\" data-spm-anchor-id=\"a220o.1000855.0.i10.591c48abotbO5M\" /><img class=\"img-ks-lazyload\" src=\"https://img.alicdn.com/imgextra/i3/4134225718/O1CN011s6tA2qDpJa9sr9_!!4134225718.jpg\" width=\"790\" align=\"absmiddle\" data-spm-anchor-id=\"a220o.1000855.0.i0.591c48abotbO5M\" /><img class=\"img-ks-lazyload\" src=\"https://img.alicdn.com/imgextra/i4/4134225718/O1CN011s6tA1VUSl5L792_!!4134225718.jpg\" width=\"790\" align=\"absmiddle\" /><img class=\"img-ks-lazyload\" src=\"https://img.alicdn.com/imgextra/i2/4134225718/O1CN011s6t9vku1BsbKeo_!!4134225718.jpg\" width=\"790\" align=\"absmiddle\" /><img class=\"img-ks-lazyload\" src=\"https://img.alicdn.com/imgextra/i3/4134225718/O1CN011s6tA2JHiYfv0XK_!!4134225718.jpg\" width=\"790\" align=\"absmiddle\" /><img class=\"img-ks-lazyload\" src=\"https://img.alicdn.com/imgextra/i3/4134225718/O1CN011s6tA01t8vWMNub_!!4134225718.jpg\" width=\"790\" align=\"absmiddle\" /><img class=\"img-ks-lazyload\" src=\"https://img.alicdn.com/imgextra/i2/4134225718/O1CN011s6tA1vYseCmCxv_!!4134225718.jpg\" width=\"790\" align=\"absmiddle\" /><img class=\"img-ks-lazyload\" src=\"https://img.alicdn.com/imgextra/i2/4134225718/O1CN011s6tA2JHiaJAiNR_!!4134225718.jpg\" width=\"790\" align=\"absmiddle\" /><img class=\"img-ks-lazyload\" src=\"https://img.alicdn.com/imgextra/i2/4134225718/O1CN011s6tA01sL8d3mKD_!!4134225718.jpg\" width=\"790\" align=\"absmiddle\" /><img class=\"img-ks-lazyload\" src=\"https://img.alicdn.com/imgextra/i3/4134225718/O1CN011s6tA1VUrpntRXW_!!4134225718.jpg\" width=\"790\" align=\"absmiddle\" /><img class=\"img-ks-lazyload\" src=\"https://img.alicdn.com/imgextra/i4/4134225718/O1CN011s6tA2H1g9yk8i2_!!4134225718.jpg\" width=\"790\" align=\"absmiddle\" data-spm-anchor-id=\"a220o.1000855.0.i2.591c48abotbO5M\" /></p>"
+
+
 Page({
   //相当于vue中的data,存放页面内部的数据
   data: {
+    content,
     showActionsheet: false,
     groups: [
       { text: '示例菜单', value: 1 },
@@ -50,6 +59,18 @@ Page({
   },
   onLoad() {
     
+    //var article = '<div>我是HTML代码</div>';
+    /**
+    * WxParse.wxParse(bindName , type, data, target,imagePadding)
+    * 1.bindName绑定的数据名(必填)
+    * 2.type可以为html或者md(必填)
+    * 3.data为传入的具体数据(必填)
+    * 4.target为Page对象,一般为this(必填)
+    * 5.imagePadding为当图片自适应是左右的单一padding(默认为0,可选)
+    */
+    var that = this;
+    WxParse.wxParse('article', 'html', this.data.content, this, 5);
+
 
     
     console.log('页面onload')
