@@ -1,0 +1,9 @@
+<view class="movie_list">
+  
+  <view class="movie_item" 
+  wx:for="{{ list }}" wx:key="item.id">
+     <image src="{{ item.images.small }}" />
+     <text>{{ item.title }}</text>
+  </view>
+
+</view>

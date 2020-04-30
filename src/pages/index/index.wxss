@@ -1,0 +1,53 @@
+@import "/public/style/theme1.wxss";
+/**index.wxss**/
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+
+.item {
+  line-height:160rpx;
+}
+
+
+.goodsGrid {
+  display: flex;
+  width:100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.goodsGrid view {
+  flex:1;
+  /* border:1px solid #f00; */
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+
+}
+
+.sw {
+  border:1px solid #f00;
+}
+
+.sw image {
+  width:100%;
+}
+

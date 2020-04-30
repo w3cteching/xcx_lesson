@@ -1,0 +1,27 @@
+@import '/miniprogram_npm/weui-miniprogram/weui-wxss/dist/style/weui.wxss';
+
+@import "/wxParse/wxParse.wxss";
+
+
+/**app.wxss**/
+.container {
+  height: 100%;
+  /* display: flex;  */
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  /* padding: 200rpx 0; */
+  box-sizing: border-box;
+} 
+
+
+.box {
+  border:1px solid #f00;
+  height: 60rpx;
+}
+
+.bg {
+  background: #00f;
+  color:#fff;
+}
+

@@ -1,0 +1,18 @@
+<view class="cart">
+
+
+ <scroll-view scroll-y="true" style="height:{{ height }}px;"  bindscrolltolower="lower">
+         
+ <view class="movie_item" 
+    wx:for="{{ list }}" wx:key="item.id">
+      <image src="{{ item.images.small }}" />
+      <text>{{ item.title }}</text>
+    </view>
+
+
+
+</scroll-view>
+
+
+</view>
+

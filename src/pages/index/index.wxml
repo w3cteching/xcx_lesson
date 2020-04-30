@@ -1,0 +1,104 @@
+
+<import src="/wxParse/wxParse.wxml"/>
+
+
+
+
+
+<!--index.wxml-->
+<view class="container">
+  <!-- <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view> -->
+<!-- 
+
+  <view>
+    <text>{{ title }}</text>
+  </view> -->
+
+<!-- 
+   <view>
+     <text>{{ arr }}</text>
+   </view> -->
+<!-- 
+   <input placeholder="请输入内容" bindinput="add"></input>
+
+   <view class="list" wx:if="{{ users.length>0 }}">
+      <view 
+          class="item" 
+          wx:for="{{ users  }}"
+          wx:key="ite.id"
+      >
+        <text style="color:{{ c }}">编号：{{index+1}}--</text>
+         <text>用户名：{{ item.name }}---</text>
+         <text>年龄：{{ item.age }}</text>
+         <button size="mini" 
+                 bindtap="delete"
+                 data-idx="{{ index }}"
+          >删除</button>
+          <button size="mini" 
+                 bindtap="modi"
+                 data-idx="{{ index }}">修改</button>
+      </view>
+   </view>
+   
+
+   <view wx:else>数据已经清空了</view> -->
+
+
+<!-- 首页-swiper -->
+
+<swiper class="sw" 
+        indicator-dots="{{ isShow }}"
+        indicator-color="#00f"
+        indicator-active-color="#f00"
+        autoplay="{{ true }}"
+        interval="3000"
+        circular="{{ true }}"
+>
+  <swiper-item>
+    <image src="https://imgcps.jd.com/ling4/100006713417/5omL5py66LSt5a6e5oOg/5aSH6LSn6LaF5YC8/p-5c17126882acdd181dd53ce0/926bd6c3/cr_1125x445_0_171/s1125x690/q70.jpg"></image>
+  </swiper-item>
+  <swiper-item>
+    <image src="https://m.360buyimg.com/mobilecms/s700x280_jfs/t1/31162/17/1128/101786/5c46ead8E22ee9740/f66061da227c1965.jpg!cr_1125x445_0_171!q70.jpg.dpg"></image>
+  </swiper-item>
+  <swiper-item>3333</swiper-item>
+  <swiper-item>44444</swiper-item>
+</swiper>
+
+
+<view bindtap="parentBox">
+
+  <button catchtap="openDialog">打开弹框</button>
+
+
+</view>
+
+
+<view> {{typeInfo }}</view>
+
+
+<mp-dialog title="确定支付" show="{{isShow}}" bindbuttontap="tapDialogButton" buttons="{{[{text: '取消'}, {text: '确认'}]}}">
+    <view>支付金额：￥100.00</view>
+</mp-dialog>
+
+
+<mp-actionSheet bindactiontap="btnClick" show="{{showActionsheet}}" actions="{{groups}}" title="这是一个标题，可以为一行或者两行。">
+</mp-actionSheet>
+
+
+
+<view>
+
+<template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+</view>
+
+
+</view>

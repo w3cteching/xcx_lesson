@@ -1,0 +1,9 @@
+{ 
+  "navigationBarTitleText": "分类",
+  "usingComponents": {
+    "TestCom":"/public/components/testcom/testcom",
+    "van-calendar": "@vant/weapp/calendar/index",
+    "van-rate": "@vant/weapp/rate/index",
+    "van-circle": "@vant/weapp/circle/index"
+  }
+}

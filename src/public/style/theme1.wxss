@@ -1,0 +1,6 @@
+button {
+  width:150rpx;
+  height:80rpx;
+  color:#00f;
+
+}

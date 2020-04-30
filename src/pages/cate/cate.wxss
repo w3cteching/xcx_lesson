@@ -1,0 +1,11 @@
+
+.movie_item {
+  height: 300rpx;
+  border-bottom:1px solid #f00;
+}
+
+.movie_item image {
+  width:220rpx;
+  height: 225rpx;
+}
+

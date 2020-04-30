@@ -1,0 +1,38 @@
+/* public/components/dialog/dialog.wxss */
+
+.dialog_main_btns button {
+  width:150rpx;
+  position: relative;
+  bottom:-70rpx;
+}
+
+.dialog_main_btns  {
+  display: flex;
+}
+
+.dialog_main {
+  /* border:1px solid #f00; */
+  width:80%;
+  height: 260rpx;
+  position: absolute;
+  left:0;
+  right:0;
+  top:0;
+  bottom:0;
+  margin:auto;
+  background: #fff;
+  z-index: 99999
+}
+
+.dialog_main_content {
+  text-align: center;
+}
+
+.dialog_mask {
+  position: absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  top:0;
+  background: rgba(0, 0, 0, .5)
+}
